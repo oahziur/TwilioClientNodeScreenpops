@@ -3,8 +3,8 @@ var express = require('express')
   , http = require('http')
   , server = http.createServer(app)
   , io = require('socket.io').listen(server)
-  , twilio = require('twilio')
-  , fullcontact = require("fullcontact-api")(process.env.FULLCONTACT_API_KEY);
+  , twilio = require('twilio');
+
 
 server.listen(3000);
 
@@ -43,14 +43,13 @@ app.get('/client', clientRoute);
 io.sockets.on('connection', function(socket) {
   console.log('socket.io connected');
   socket.on('incoming', function(caller) {
-    fullcontact.person.findByPhone(caller, "US", function(err, person) {
-      var details = {
-        number: caller,
-        name: person.contactInfo.fullName,
-        photo: person.photos[0].url
-      }
-      socket.emit('foundPerson', details);
-    });
+    // some random info for testing
+    var details = {
+      number: caller,
+      name: 'Rui Zhao',
+      photo: 'http://fmn.rrfmn.com/fmn060/20140322/1030/original_7ZZH_7e970000030a1191.jpg'
+    };
+    socket.emit('foundPerson', details);
   });
 });
 

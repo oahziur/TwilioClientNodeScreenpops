@@ -1,4 +1,4 @@
-Twilio Client, FullContact API, + Node.js Screen Pops Example
+Twilio Client, + Node.js Screen Pops Example
 ===========================
 
 Find the full tutorial at twilio.com/blog
